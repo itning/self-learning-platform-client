@@ -25,7 +25,7 @@
     data: () => ({
       isLoading: false,
       headers: [
-        {text: '班名', align: 'start', value: 'name',},
+        {text: '班级', align: 'start', value: 'name',},
         {text: '创建时间', value: 'gmtCreate'},
         {text: '修改时间', value: 'gmtModified'},
         {text: '操作', value: 'actions', sortable: false},

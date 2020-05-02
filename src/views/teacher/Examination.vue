@@ -1,11 +1,11 @@
 <template>
   <div>
-    <crud-table title="科目管理" :headers="headers" :data="data" :data-loading="isLoading"
+    <crud-table title="考试管理" :headers="headers" :data="data" :data-loading="isLoading"
                 @save="handleSave" @update="handleUpdate" @delete="handleDelete">
       <template v-slot="{editedItem,isModify}">
         <v-row>
           <v-col cols="12">
-            <v-text-field v-model="editedItem.name" label="科目名"></v-text-field>
+            <v-text-field v-model="editedItem.name" label="考试信息"></v-text-field>
           </v-col>
         </v-row>
       </template>
@@ -20,12 +20,12 @@
   import {formatItemResponseDateTime, formatResponseDateTime} from "../../util";
 
   export default {
-    name: "Subject",
+    name: "Examination",
     components: {CrudTable},
     data: () => ({
       isLoading: false,
       headers: [
-        {text: '科目', align: 'start', value: 'name',},
+        {text: '考试', align: 'start', value: 'name',},
         {text: '创建时间', value: 'gmtCreate'},
         {text: '修改时间', value: 'gmtModified'},
         {text: '操作', value: 'actions', sortable: false},
@@ -35,7 +35,7 @@
     methods: {
       initialize() {
         this.isLoading = true;
-        Get(API.subject.all)
+        Get(API.examination.all)
           .withSuccessCode(200)
           .do(response => {
             this.data = formatResponseDateTime(response.data.data)
@@ -49,7 +49,7 @@
           alert("值不能为空");
           return;
         }
-        Post(API.subject.add)
+        Post(API.examination.add)
           .withURLSearchParams(data)
           .withSuccessCode(201)
           .do(response => {
@@ -63,7 +63,7 @@
           return;
         }
         const json = {id: data.id, name: data.name}
-        Patch(API.subject.update)
+        Patch(API.examination.update)
           .withJson(json)
           .withSuccessCode(204)
           .do(() => {
@@ -72,7 +72,7 @@
           })
       },
       handleDelete(data) {
-        Delete(API.subject.del + data.id)
+        Delete(API.examination.del + data.id)
           .withSuccessCode(204)
           .do(() => {
             const index = this.data.indexOf(data)

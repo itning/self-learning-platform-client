@@ -18,6 +18,14 @@
             <v-list-item-title>科目管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link @click="pushRouter('/teacher/examination')">
+          <v-list-item-action>
+            <v-icon>mdi-counter</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>考试管理</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="blue darken-3" dark>
@@ -26,6 +34,7 @@
         <span class="hidden-sm-and-down">自主学习平台系统</span>
       </v-toolbar-title>
       <v-spacer/>
+      <VueMarquee :marqueeList="announcements" speed="300" autoPlay="5000" fontSize="20"/>
       <v-menu bottom left>
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on">
@@ -51,11 +60,19 @@
 </template>
 
 <script>
+  import {API} from "../../api";
+  import {Get} from "@itning/axios-helper";
+  import VueMarquee from "../../components/VueMarquee";
+
   export default {
     name: "TeacherIndex",
+    components: {
+      VueMarquee
+    },
     data: () => ({
       drawer: null,
-      user: {}
+      user: {},
+      announcements: []
     }),
     methods: {
       pushRouter(path) {
@@ -63,10 +80,20 @@
           return;
         }
         this.$router.push(path);
+      },
+      getAnnouncements() {
+        Get(API.announcement.all)
+          .withSuccessCode(200)
+          .do(response => {
+            this.announcements = response.data.data.map(item => {
+              return item.content;
+            });
+          })
       }
     },
     created() {
       this.user = this.$user.loginUser();
+      this.getAnnouncements();
     }
   }
 </script>

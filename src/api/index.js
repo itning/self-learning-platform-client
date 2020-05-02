@@ -41,5 +41,11 @@ export const API = {
     del: `${SERVER_HOST}/subject/`,
     update: `${SERVER_HOST}/subject`
   },
+  examination: {
+    all: `${SERVER_HOST}/examinations`,
+    add: `${SERVER_HOST}/examination`,
+    del: `${SERVER_HOST}/examination/`,
+    update: `${SERVER_HOST}/examination`
+  },
   log: `${SERVER_HOST}/system_log`
 }

@@ -70,6 +70,12 @@ const routes = [
         }
       },
       {
+        path: 'examination',
+        components: {
+          subContent: () => import(/* webpackChunkName: "Examination" */ '../views/teacher/Examination.vue')
+        }
+      },
+      {
         path: '',
         redirect: 'clazz'
       }
