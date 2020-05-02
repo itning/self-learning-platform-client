@@ -68,7 +68,7 @@
           <v-list-item @click="">
             <v-list-item-title>{{user.name}}</v-list-item-title>
           </v-list-item>
-          <v-list-item @click="pushRouter('/security')">
+          <v-list-item @click="pushRouter('/login')">
             <v-list-item-title>注销登录</v-list-item-title>
           </v-list-item>
         </v-list>

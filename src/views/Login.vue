@@ -18,6 +18,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer/>
+                <v-btn color="primary" @click="$router.push('/reg')">注册</v-btn>
                 <v-btn color="primary" @click="login">登录</v-btn>
               </v-card-actions>
             </v-card>
@@ -33,7 +34,7 @@
   import {API} from "../api";
 
   export default {
-    name: "Security",
+    name: "Login",
     data() {
       return {
         loginInfo: {

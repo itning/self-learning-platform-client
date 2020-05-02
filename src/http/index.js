@@ -40,7 +40,7 @@ HelpConfig.axiosInstanceBuilder
           case 401:
             window.localStorage.setItem('last_path', window.location.pathname);
             setTimeout(() => {
-              window.location.href = "/security";
+              window.location.href = "/login";
             }, 2000);
             break;
           case 403:

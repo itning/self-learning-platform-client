@@ -12,7 +12,8 @@ export const API = {
     update: `${SERVER_HOST}/user`
   },
   security: {
-    login: `${SERVER_HOST}/security/login`
+    login: `${SERVER_HOST}/security/login`,
+    reg: `${SERVER_HOST}/security/reg`
   },
   announcement: {
     all: `${SERVER_HOST}/announcements`,
@@ -26,6 +27,9 @@ export const API = {
     addByAdmin: `${SERVER_HOST}/attendance_admin`,
     add: `${SERVER_HOST}/attendance`,
     update: `${SERVER_HOST}/attendance_change`
+  },
+  studentClass: {
+    allWithTeacherName: `${SERVER_HOST}/classes`
   },
   log: `${SERVER_HOST}/system_log`
 }
