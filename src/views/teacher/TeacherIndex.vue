@@ -84,7 +84,7 @@
 
 <script>
   export default {
-    name: "AdminIndex",
+    name: "TeacherIndex",
     data: () => ({
       drawer: null,
       user: {}

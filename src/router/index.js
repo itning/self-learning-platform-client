@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import AdminIndex from "../views/admin/AdminIndex";
+import TeacherIndex from "../views/teacher/TeacherIndex";
+import StudentIndex from "../views/student/StudentIndex";
 
 Vue.use(VueRouter)
 
@@ -50,6 +52,16 @@ const routes = [
         redirect: 'teacherManagement'
       },
     ]
+  },
+  {
+    path: '/teacher',
+    component: TeacherIndex,
+    children: []
+  },
+  {
+    path: '/student',
+    component: StudentIndex,
+    children: []
   },
   {
     path: '/login',

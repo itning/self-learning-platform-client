@@ -32,6 +32,7 @@
 <script>
   import {Post} from "@itning/axios-helper";
   import {API} from "../api";
+  import {resolveToken} from "../user";
 
   export default {
     name: "Login",
@@ -54,9 +55,8 @@
           .withSuccessCode(200)
           .withErrorStartMsg("登录失败")
           .do(response => {
-            console.log(response.data);
             window.localStorage.setItem('authorization_token', response.data.data);
-            const loginUser = this.$user.loginUser;
+            const loginUser = resolveToken(response.data.data);
             switch (loginUser.roleId) {
               case 'a': {
                 this.$router.push('/admin');

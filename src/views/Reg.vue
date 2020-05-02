@@ -50,7 +50,6 @@
           this.reg.name.trim() === '' || this.reg.username.trim() === '' || this.reg.password.trim() === '') {
           alert('值为空')
         }
-        console.log(JSON.stringify(this.reg));
         Post(API.security.reg)
           .withSuccessCode(201)
           .withURLSearchParams(this.reg)

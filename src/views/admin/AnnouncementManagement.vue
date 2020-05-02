@@ -35,7 +35,6 @@
           .withSuccessCode(200)
           .do(response => {
             this.data = formatResponseDateTime(response.data.data)
-            console.log(response.data.data)
           })
           .doAfter(() => {
             this.isLoading = false;
@@ -46,7 +45,6 @@
           alert("值不能为空");
           return;
         }
-        console.log(JSON.stringify(data));
         Post(API.announcement.add)
           .withURLSearchParams(data)
           .withSuccessCode(201)
@@ -61,7 +59,6 @@
           return;
         }
         const json = {id: data.id, content: data.content}
-        console.log(`index ${index} data: ${JSON.stringify(data)}`);
         Patch(API.announcement.update)
           .withJson(json)
           .withSuccessCode(204)
@@ -71,7 +68,6 @@
           })
       },
       handleDelete(data) {
-        console.log(JSON.stringify(data));
         Delete(API.announcement.del + data.id)
           .withSuccessCode(204)
           .do(() => {

@@ -84,7 +84,7 @@
 
 <script>
   export default {
-    name: "AdminIndex",
+    name: "StudentIndex",
     data: () => ({
       drawer: null,
       user: {}
@@ -98,7 +98,7 @@
       }
     },
     created() {
-      this.user = this.$user.loginUser();
+      this.user = this.$user.loginUser;
     }
   }
 </script>

@@ -49,7 +49,6 @@
               item.freeze_format = item.freeze ? '冻结' : '可用';
               return item;
             });
-            console.log(response.data.data)
           })
           .doAfter(() => {
             this.isLoading = false;
@@ -61,7 +60,6 @@
           alert("值不能为空");
           return;
         }
-        console.log(JSON.stringify(data));
         Post(API.teacher.add)
           .withURLSearchParams(data)
           .withSuccessCode(201)
@@ -79,7 +77,6 @@
           return;
         }
         const json = {id: data.id, name: data.name, username: data.username, freeze: data.freeze}
-        console.log(`index ${index} data: ${JSON.stringify(data)}`);
         Patch(API.user.update)
           .withJson(json)
           .withSuccessCode(204)
@@ -89,7 +86,6 @@
           })
       },
       handleDelete(data) {
-        console.log(JSON.stringify(data));
         Delete(API.user.del + data.id)
           .withSuccessCode(204)
           .do(() => {

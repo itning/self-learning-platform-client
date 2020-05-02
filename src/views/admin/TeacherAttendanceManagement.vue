@@ -80,7 +80,6 @@
               item.time = dayjs(item.gmtModified).format("HH:mm:ss");
               return item;
             })
-            console.log(response.data.data)
           })
           .doAfter(() => {
             this.isLoading = false;
@@ -92,7 +91,6 @@
           alert("值不能为空");
           return;
         }
-        console.log(JSON.stringify(data));
         Post(API.attendance.addByAdmin)
           .withURLSearchParams({userId: data.userId, date: `${data.date} ${data.time}`})
           .withSuccessCode(201)
@@ -111,7 +109,6 @@
           return;
         }
         const json = {id: data.id, date: `${data.date} ${data.time}`}
-        console.log(`index ${index} data: ${JSON.stringify(data)}`);
         Post(API.attendance.update)
           .withURLSearchParams(json)
           .withSuccessCode(204)
@@ -121,7 +118,6 @@
           })
       },
       handleDelete(data) {
-        console.log(JSON.stringify(data));
         Delete(API.attendance.del + data.id)
           .withSuccessCode(204)
           .do(() => {
