@@ -33,7 +33,8 @@ export const API = {
     all: `${SERVER_HOST}/student_classes`,
     add: `${SERVER_HOST}/student_class`,
     del: `${SERVER_HOST}/student_class/`,
-    update: `${SERVER_HOST}/student_class`
+    update: `${SERVER_HOST}/student_class`,
+    allStudentInClass: `${SERVER_HOST}/student_in_class`
   },
   subject: {
     all: `${SERVER_HOST}/subjects`,
@@ -46,6 +47,12 @@ export const API = {
     add: `${SERVER_HOST}/examination`,
     del: `${SERVER_HOST}/examination/`,
     update: `${SERVER_HOST}/examination`
+  },
+  examinationScore: {
+    all: `${SERVER_HOST}/examination_scores`,
+    add: `${SERVER_HOST}/examination_score`,
+    del: `${SERVER_HOST}/examination_score/`,
+    update: `${SERVER_HOST}/examination_score`
   },
   log: `${SERVER_HOST}/system_log`
 }

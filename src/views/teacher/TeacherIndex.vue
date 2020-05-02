@@ -26,6 +26,22 @@
             <v-list-item-title>考试管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link @click="pushRouter('/teacher/examinationScore')">
+          <v-list-item-action>
+            <v-icon>mdi-calendar-month-outline</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>成绩管理</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link @click="pushRouter('/teacher/learningContent')">
+          <v-list-item-action>
+            <v-icon>mdi-play-protected-content</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>学习内容管理</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="blue darken-3" dark>
@@ -85,9 +101,7 @@
         Get(API.announcement.all)
           .withSuccessCode(200)
           .do(response => {
-            this.announcements = response.data.data.map(item => {
-              return item.content;
-            });
+            this.announcements = response.data.data.map(item => item.content);
           })
       }
     },

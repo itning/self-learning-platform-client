@@ -76,6 +76,18 @@ const routes = [
         }
       },
       {
+        path: 'examinationScore',
+        components: {
+          subContent: () => import(/* webpackChunkName: "ExaminationScore" */ '../views/teacher/ExaminationScore.vue')
+        }
+      },
+      {
+        path: 'learningContent',
+        components: {
+          subContent: () => import(/* webpackChunkName: "LearningContent" */ '../views/teacher/LearningContent.vue')
+        }
+      },
+      {
         path: '',
         redirect: 'clazz'
       }
