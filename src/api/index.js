@@ -29,7 +29,17 @@ export const API = {
     update: `${SERVER_HOST}/attendance_change`
   },
   studentClass: {
-    allWithTeacherName: `${SERVER_HOST}/classes`
+    allWithTeacherName: `${SERVER_HOST}/classes`,
+    all: `${SERVER_HOST}/student_classes`,
+    add: `${SERVER_HOST}/student_class`,
+    del: `${SERVER_HOST}/student_class/`,
+    update: `${SERVER_HOST}/student_class`
+  },
+  subject: {
+    all: `${SERVER_HOST}/subjects`,
+    add: `${SERVER_HOST}/subject`,
+    del: `${SERVER_HOST}/subject/`,
+    update: `${SERVER_HOST}/subject`
   },
   log: `${SERVER_HOST}/system_log`
 }

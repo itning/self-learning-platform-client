@@ -50,13 +50,30 @@ const routes = [
       {
         path: '',
         redirect: 'teacherManagement'
-      },
+      }
     ]
   },
   {
     path: '/teacher',
     component: TeacherIndex,
-    children: []
+    children: [
+      {
+        path: 'clazz',
+        components: {
+          subContent: () => import(/* webpackChunkName: "Clazz" */ '../views/teacher/Clazz.vue')
+        }
+      },
+      {
+        path: 'subject',
+        components: {
+          subContent: () => import(/* webpackChunkName: "Subject" */ '../views/teacher/Subject.vue')
+        }
+      },
+      {
+        path: '',
+        redirect: 'clazz'
+      }
+    ]
   },
   {
     path: '/student',
@@ -73,7 +90,7 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '/admin'
+    redirect: '/login'
   }
 ]
 

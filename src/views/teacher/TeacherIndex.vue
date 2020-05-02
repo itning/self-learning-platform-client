@@ -2,52 +2,20 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
       <v-list dense>
-        <v-list-item link @click="pushRouter('/admin/teacherManagement')">
+        <v-list-item link @click="pushRouter('/teacher/clazz')">
           <v-list-item-action>
-            <v-icon>mdi-cards</v-icon>
+            <v-icon>mdi-book-variant</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>教师管理</v-list-item-title>
+            <v-list-item-title>班级管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/studentManagement')">
+        <v-list-item link @click="pushRouter('/teacher/subject')">
           <v-list-item-action>
-            <v-icon>mdi-file-cad-box</v-icon>
+            <v-icon>mdi-playlist-check</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>学生管理</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/teacherAttendanceManagement')">
-          <v-list-item-action>
-            <v-icon>mdi-calendar-multiple-check</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>教师出勤管理</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/studentAttendanceManagement')">
-          <v-list-item-action>
-            <v-icon>mdi-calendar-multiple</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>学生出勤管理</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/announcementManagement')">
-          <v-list-item-action>
-            <v-icon>mdi-bullhorn</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>公告管理</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/log')">
-          <v-list-item-action>
-            <v-icon>mdi-current-ac</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>系统日志</v-list-item-title>
+            <v-list-item-title>科目管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
