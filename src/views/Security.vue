@@ -55,6 +55,25 @@
           .do(response => {
             console.log(response.data);
             window.localStorage.setItem('authorization_token', response.data.data);
+            const loginUser = this.$user.loginUser;
+            switch (loginUser.roleId) {
+              case 'a': {
+                this.$router.push('/admin');
+                break;
+              }
+              case 'b': {
+                this.$router.push('/teacher');
+                break;
+              }
+              case 'c': {
+                this.$router.push('/student');
+                break;
+              }
+              default: {
+                console.warn(loginUser)
+                alert("未知角色");
+              }
+            }
           })
       }
     }

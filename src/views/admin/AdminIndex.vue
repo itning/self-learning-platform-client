@@ -58,12 +58,21 @@
         <span class="hidden-sm-and-down">自主学习平台系统</span>
       </v-toolbar-title>
       <v-spacer/>
-      <v-btn icon>
-        <v-icon>mdi-apps</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
-      </v-btn>
+      <v-menu bottom left>
+        <template v-slot:activator="{ on }">
+          <v-btn dark icon v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item @click="">
+            <v-list-item-title>{{user.name}}</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="pushRouter('/security')">
+            <v-list-item-title>注销登录</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
     <v-content>
       <v-container fluid>
@@ -77,15 +86,19 @@
   export default {
     name: "IndexView",
     data: () => ({
-      drawer: null
+      drawer: null,
+      user: {}
     }),
-    methods:{
+    methods: {
       pushRouter(path) {
         if (this.$route.path === path) {
           return;
         }
         this.$router.push(path);
       }
+    },
+    created() {
+      this.user = this.$user.loginUser;
     }
   }
 </script>
