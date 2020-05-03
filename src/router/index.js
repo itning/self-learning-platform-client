@@ -123,7 +123,7 @@ const routes = [
       },
       {
         path: '',
-        redirect: 'myClass'
+        redirect: 'myStudy'
       }
     ]
   },

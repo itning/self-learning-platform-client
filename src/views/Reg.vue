@@ -46,9 +46,10 @@
     },
     methods: {
       doReg() {
-        if (!this.reg.name || !this.reg.username || !this.reg.password ||
-          this.reg.name.trim() === '' || this.reg.username.trim() === '' || this.reg.password.trim() === '') {
-          alert('值为空')
+        if (!this.reg.name || !this.reg.username || !this.reg.password || !this.reg.studentClassId ||
+          this.reg.name.trim() === '' || this.reg.username.trim() === '' || this.reg.password.trim() === '' || this.reg.studentClassId.trim() === '') {
+          alert('值为空');
+          return;
         }
         Post(API.security.reg)
           .withSuccessCode(201)

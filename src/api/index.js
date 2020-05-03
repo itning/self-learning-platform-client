@@ -34,7 +34,9 @@ export const API = {
     add: `${SERVER_HOST}/student_class`,
     del: `${SERVER_HOST}/student_class/`,
     update: `${SERVER_HOST}/student_class`,
-    allStudentInClass: `${SERVER_HOST}/student_in_class`
+    allStudentInClass: `${SERVER_HOST}/student_in_class`,
+    studentOwnClass: `${SERVER_HOST}/my_classes`,
+    joinClass: `${SERVER_HOST}/join_class`
   },
   subject: {
     all: `${SERVER_HOST}/subjects`,
