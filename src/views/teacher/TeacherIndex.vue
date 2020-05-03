@@ -69,6 +69,9 @@
           <v-list-item @click="">
             <v-list-item-title>{{user.name}}</v-list-item-title>
           </v-list-item>
+          <v-list-item @click="attendance">
+            <v-list-item-title>出勤打卡</v-list-item-title>
+          </v-list-item>
           <v-list-item @click="pushRouter('/login')">
             <v-list-item-title>注销登录</v-list-item-title>
           </v-list-item>
@@ -85,7 +88,7 @@
 
 <script>
   import {API} from "../../api";
-  import {Get} from "@itning/axios-helper";
+  import {Get, Post} from "@itning/axios-helper";
   import VueMarquee from "../../components/VueMarquee";
 
   export default {
@@ -111,6 +114,9 @@
           .do(response => {
             this.announcements = response.data.data.map(item => item.content);
           })
+      },
+      attendance() {
+        Post(API.attendance.add).withSuccessCode(201).withErrorStartMsg('警告').do(response => alert("打卡成功"));
       }
     },
     created() {
