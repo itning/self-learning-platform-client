@@ -54,5 +54,11 @@ export const API = {
     del: `${SERVER_HOST}/examination_score/`,
     update: `${SERVER_HOST}/examination_score`
   },
+  learningContent: {
+    all: `${SERVER_HOST}/learning_contents`,
+    add: `${SERVER_HOST}/learning_content`,
+    del: `${SERVER_HOST}/learning_content/`,
+    update: `${SERVER_HOST}/learning_content`
+  },
   log: `${SERVER_HOST}/system_log`
 }

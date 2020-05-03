@@ -18,3 +18,14 @@ export function group(array, subGroupLength) {
   }
   return newArray;
 }
+
+export function formatFileSize(size) {
+  let number = Number(size);
+  if (number < 1048576) {
+    return (number / 1024).toFixed(2) + ' KB';
+  } else if (number < 1073741824) {
+    return (number / 1024 / 1024).toFixed(2) + ' MB';
+  } else {
+    return (number / 1024 / 1024 / 1024).toFixed(2) + ' GB';
+  }
+}
