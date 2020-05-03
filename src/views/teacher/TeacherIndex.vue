@@ -72,6 +72,9 @@
           <v-list-item @click="attendance">
             <v-list-item-title>出勤打卡</v-list-item-title>
           </v-list-item>
+          <v-list-item @click="isChangePasswordDialogVisible=true">
+            <v-list-item-title>修改密码</v-list-item-title>
+          </v-list-item>
           <v-list-item @click="pushRouter('/login')">
             <v-list-item-title>注销登录</v-list-item-title>
           </v-list-item>
@@ -83,12 +86,33 @@
         <router-view name="subContent"/>
       </v-container>
     </v-content>
+    <v-dialog v-model="isChangePasswordDialogVisible" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">修改密码</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field type="password" label="新密码" required v-model="newPassword"></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="isChangePasswordDialogVisible = false">关闭</v-btn>
+          <v-btn color="blue darken-1" text @click="changePassword">保存</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
 <script>
   import {API} from "../../api";
-  import {Get, Post} from "@itning/axios-helper";
+  import {Get, Patch, Post} from "@itning/axios-helper";
   import VueMarquee from "../../components/VueMarquee";
 
   export default {
@@ -97,6 +121,8 @@
       VueMarquee
     },
     data: () => ({
+      isChangePasswordDialogVisible: false,
+      newPassword: '',
       drawer: null,
       user: {},
       announcements: []
@@ -117,6 +143,20 @@
       },
       attendance() {
         Post(API.attendance.add).withSuccessCode(201).withErrorStartMsg('警告').do(response => alert("打卡成功"));
+      },
+      changePassword() {
+        if (this.newPassword.trim() === '') {
+          alert('密码不能为空');
+          return;
+        }
+        Patch(API.user.update)
+          .withSuccessCode(204)
+          .withJson({password: this.newPassword})
+          .do(() => {
+            this.isChangePasswordDialogVisible = false;
+            alert('修改成功');
+            this.$router.push('/login');
+          })
       }
     },
     created() {

@@ -2,52 +2,28 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
       <v-list dense>
-        <v-list-item link @click="pushRouter('/admin/teacherManagement')">
+        <v-list-item link @click="pushRouter('/teacher/clazz')">
           <v-list-item-action>
-            <v-icon>mdi-cards</v-icon>
+            <v-icon>mdi-book-variant</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>教师管理</v-list-item-title>
+            <v-list-item-title>我的班级</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/studentManagement')">
+        <v-list-item link @click="pushRouter('/teacher/subject')">
           <v-list-item-action>
-            <v-icon>mdi-file-cad-box</v-icon>
+            <v-icon>mdi-playlist-check</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>学生管理</v-list-item-title>
+            <v-list-item-title>我的学习</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/teacherAttendanceManagement')">
+        <v-list-item link @click="pushRouter('/teacher/examination')">
           <v-list-item-action>
-            <v-icon>mdi-calendar-multiple-check</v-icon>
+            <v-icon>mdi-counter</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>教师出勤管理</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/studentAttendanceManagement')">
-          <v-list-item-action>
-            <v-icon>mdi-calendar-multiple</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>学生出勤管理</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/announcementManagement')">
-          <v-list-item-action>
-            <v-icon>mdi-bullhorn</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>公告管理</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="pushRouter('/admin/log')">
-          <v-list-item-action>
-            <v-icon>mdi-current-ac</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>系统日志</v-list-item-title>
+            <v-list-item-title>我的作业</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -58,6 +34,7 @@
         <span class="hidden-sm-and-down">自主学习平台系统</span>
       </v-toolbar-title>
       <v-spacer/>
+      <VueMarquee :marqueeList="announcements" speed="300" autoPlay="5000" fontSize="20"/>
       <v-menu bottom left>
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on">
@@ -67,6 +44,12 @@
         <v-list>
           <v-list-item @click="">
             <v-list-item-title>{{user.name}}</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="attendance">
+            <v-list-item-title>出勤打卡</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="isChangePasswordDialogVisible=true">
+            <v-list-item-title>修改密码</v-list-item-title>
           </v-list-item>
           <v-list-item @click="pushRouter('/login')">
             <v-list-item-title>注销登录</v-list-item-title>
@@ -79,15 +62,46 @@
         <router-view name="subContent"/>
       </v-container>
     </v-content>
+    <v-dialog v-model="isChangePasswordDialogVisible" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">修改密码</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field type="password" label="新密码" required v-model="newPassword"></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="isChangePasswordDialogVisible = false">关闭</v-btn>
+          <v-btn color="blue darken-1" text @click="changePassword">保存</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
 <script>
+  import {API} from "../../api";
+  import {Get, Patch, Post} from "@itning/axios-helper";
+  import VueMarquee from "../../components/VueMarquee";
+
   export default {
     name: "StudentIndex",
+    components: {
+      VueMarquee
+    },
     data: () => ({
+      isChangePasswordDialogVisible: false,
+      newPassword: '',
       drawer: null,
-      user: {}
+      user: {},
+      announcements: []
     }),
     methods: {
       pushRouter(path) {
@@ -95,10 +109,35 @@
           return;
         }
         this.$router.push(path);
+      },
+      getAnnouncements() {
+        Get(API.announcement.all)
+          .withSuccessCode(200)
+          .do(response => {
+            this.announcements = response.data.data.map(item => item.content);
+          })
+      },
+      attendance() {
+        Post(API.attendance.add).withSuccessCode(201).withErrorStartMsg('警告').do(response => alert("打卡成功"));
+      },
+      changePassword() {
+        if (this.newPassword.trim() === '') {
+          alert('密码不能为空');
+          return;
+        }
+        Patch(API.user.update)
+          .withSuccessCode(204)
+          .withJson({password: this.newPassword})
+          .do(() => {
+            this.isChangePasswordDialogVisible = false;
+            alert('修改成功');
+            this.$router.push('/login');
+          })
       }
     },
     created() {
-      this.user = this.$user.loginUser;
+      this.user = this.$user.loginUser();
+      this.getAnnouncements();
     }
   }
 </script>
