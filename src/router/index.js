@@ -102,7 +102,30 @@ const routes = [
   {
     path: '/student',
     component: StudentIndex,
-    children: []
+    children: [
+      {
+        path: 'myClass',
+        components: {
+          subContent: () => import(/* webpackChunkName: "MyClass" */ '../views/student/MyClass.vue')
+        }
+      },
+      {
+        path: 'myStudy',
+        components: {
+          subContent: () => import(/* webpackChunkName: "MyStudy" */ '../views/student/MyStudy.vue')
+        }
+      },
+      {
+        path: 'studyContent',
+        components: {
+          subContent: () => import(/* webpackChunkName: "StudyContent" */ '../views/student/StudyContent.vue')
+        }
+      },
+      {
+        path: '',
+        redirect: 'myClass'
+      }
+    ]
   },
   {
     path: '/login',

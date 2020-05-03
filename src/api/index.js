@@ -58,14 +58,20 @@ export const API = {
     all: `${SERVER_HOST}/learning_contents`,
     add: `${SERVER_HOST}/learning_content`,
     del: `${SERVER_HOST}/learning_content/`,
-    update: `${SERVER_HOST}/learning_content`
+    update: `${SERVER_HOST}/learning_content`,
+    allCanStudy: `${SERVER_HOST}/learning_content_of_student`
   },
   studentLearning: {
-    allByTeacher: `${SERVER_HOST}/student_learning_teacher`
+    allByTeacher: `${SERVER_HOST}/student_learning_teacher`,
+    all: `${SERVER_HOST}/student_learning`,
+    del: `${SERVER_HOST}/student_learning/`,
+    add: `${SERVER_HOST}/student_learning`
   },
   studentWork: {
     review: `${SERVER_HOST}/student_work_review`,
-    download: `${SERVER_HOST}/download_student_work/`
+    download: `${SERVER_HOST}/download_student_work/`,
+    own: `${SERVER_HOST}/student_work`,
+    upload: `${SERVER_HOST}/student_work`
   },
   log: `${SERVER_HOST}/system_log`
 }

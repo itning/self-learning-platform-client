@@ -31,7 +31,7 @@
         </v-dialog>
       </v-toolbar>
     </template>
-    <template v-slot:item.actions="{ item }" v-if="!disableDel&&!disableEdit">
+    <template v-slot:item.actions="{ item }" v-if="!disableDel||!disableEdit">
       <v-icon v-if="!disableEdit" small class="mr-2" @click="editItem(item)">mdi-pencil</v-icon>
       <v-icon v-if="!disableDel" small @click="deleteItem(item)">mdi-delete</v-icon>
     </template>

@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
       <v-list dense>
-        <v-list-item link @click="pushRouter('/teacher/clazz')">
+        <v-list-item link @click="pushRouter('/student/myClass')">
           <v-list-item-action>
             <v-icon>mdi-book-variant</v-icon>
           </v-list-item-action>
@@ -10,7 +10,7 @@
             <v-list-item-title>我的班级</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="pushRouter('/teacher/subject')">
+        <v-list-item link @click="pushRouter('/student/myStudy')">
           <v-list-item-action>
             <v-icon>mdi-playlist-check</v-icon>
           </v-list-item-action>
@@ -18,12 +18,12 @@
             <v-list-item-title>我的学习</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link @click="pushRouter('/teacher/examination')">
+        <v-list-item link @click="pushRouter('/student/studyContent')">
           <v-list-item-action>
-            <v-icon>mdi-counter</v-icon>
+            <v-icon>mdi-file-cad-box</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>我的作业</v-list-item-title>
+            <v-list-item-title>学习内容管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

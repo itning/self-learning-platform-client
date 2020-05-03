@@ -4,9 +4,13 @@ export function formatResponseDateTime(data) {
   return data.map(item => formatItemResponseDateTime(item));
 }
 
+export function formatDateTime(p, format = 'YYYY-MM-DD HH:mm:ss') {
+  return dayjs(p).format(format);
+}
+
 export function formatItemResponseDateTime(item) {
-  item.gmtCreate = dayjs(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
-  item.gmtModified = dayjs(item.gmtModified).format('YYYY-MM-DD HH:mm:ss')
+  item.gmtCreate = formatDateTime(item.gmtCreate);
+  item.gmtModified = formatDateTime(item.gmtModified);
   return item;
 }
 
