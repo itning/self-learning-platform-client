@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-select class="px-4" :items="subjectData" label="科目"
-              :loading="isSubjectLoading" :value="subjectData[0]" @change="handleExamChange"></v-select>
+              :loading="isSubjectLoading" :value="subjectData[0]" @change="handleSubjectChange"></v-select>
     <crud-table title="学习内容管理" :headers="headers" :data="data" :data-loading="isLoading"
                 :disable-add="subjectData.length===0"
                 @save="handleSave" @update="handleUpdate" @delete="handleDelete">
@@ -70,7 +70,7 @@
       nowSubjectId: null
     }),
     methods: {
-      handleExamChange(id) {
+      handleSubjectChange(id) {
         this.nowSubjectId = id;
         this.initialize(id);
       },

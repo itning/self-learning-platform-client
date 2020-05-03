@@ -88,6 +88,12 @@ const routes = [
         }
       },
       {
+        path: 'suggestion',
+        components: {
+          subContent: () => import(/* webpackChunkName: "Suggestion" */ '../views/teacher/Suggestion.vue')
+        }
+      },
+      {
         path: '',
         redirect: 'clazz'
       }

@@ -60,5 +60,12 @@ export const API = {
     del: `${SERVER_HOST}/learning_content/`,
     update: `${SERVER_HOST}/learning_content`
   },
+  studentLearning: {
+    allByTeacher: `${SERVER_HOST}/student_learning_teacher`
+  },
+  studentWork: {
+    review: `${SERVER_HOST}/student_work_review`,
+    download: `${SERVER_HOST}/download_student_work/`
+  },
   log: `${SERVER_HOST}/system_log`
 }

@@ -42,6 +42,14 @@
             <v-list-item-title>学习内容管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link @click="pushRouter('/teacher/suggestion')">
+          <v-list-item-action>
+            <v-icon>mdi-account-voice</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>教师建议</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="blue darken-3" dark>
