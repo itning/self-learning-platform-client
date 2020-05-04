@@ -12,7 +12,7 @@
                             :items="allStudentInClass"></v-autocomplete>
           </v-col>
           <v-col cols="4">
-            <v-text-field v-model="editedItem.subject" label="科目"></v-text-field>
+            <v-text-field v-model="editedItem.subject" label="学科"></v-text-field>
           </v-col>
           <v-col cols="4">
             <v-text-field v-model="editedItem.score" type="number" label="分数"></v-text-field>
