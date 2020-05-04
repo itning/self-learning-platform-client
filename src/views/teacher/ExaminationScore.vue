@@ -37,7 +37,7 @@
       isLoading: false,
       headers: [
         {text: '学生', align: 'start', value: 'user.name',},
-        {text: '科目', value: 'subject',},
+        {text: '学科', value: 'subject',},
         {text: '分数', value: 'score',},
         {text: '创建时间', value: 'gmtCreate'},
         {text: '修改时间', value: 'gmtModified'},
