@@ -11,7 +11,7 @@
 [![GitHub release](https://img.shields.io/github/release/itning/self-learning-platform-client.svg)](https://github.com/itning/self-learning-platform-client/releases)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/itning/self-learning-platform-client.svg)](https://github.com/itning/self-learning-platform-client)
 [![HitCount](http://hits.dwyl.io/itning/self-learning-platform-client.svg)](http://hits.dwyl.io/itning/self-learning-platform-client)
-[![language](https://img.shields.io/badge/language-JAVA-green.svg)](https://github.com/itning/self-learning-platform-client)
+[![language](https://img.shields.io/badge/language-Vue-green.svg)](https://github.com/itning/self-learning-platform-client)
 
 ## Project setup
 ```
