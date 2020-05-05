@@ -50,6 +50,14 @@
             <v-list-item-title>教师建议</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link @click="pushRouter('/teacher/personalInformation')">
+          <v-list-item-action>
+            <v-icon>mdi-cards</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>个人信息</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="blue darken-3" dark>

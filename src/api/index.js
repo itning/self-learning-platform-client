@@ -76,5 +76,11 @@ export const API = {
     own: `${SERVER_HOST}/student_work`,
     upload: `${SERVER_HOST}/student_work`
   },
+  teacherInfo: {
+    all: `${SERVER_HOST}/teacher_infos`,
+    add: `${SERVER_HOST}/teacher_info`,
+    del: `${SERVER_HOST}/teacher_info/`,
+    update: `${SERVER_HOST}/teacher_info`
+  },
   log: `${SERVER_HOST}/system_log`
 }
