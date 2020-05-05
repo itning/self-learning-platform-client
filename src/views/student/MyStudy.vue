@@ -6,7 +6,16 @@
     <video ref="videoPlayer" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid mb-4" controls
            preload="auto"></video>
     <v-row v-if="learningContent.data.length!==0">
-      <v-col cols="6">
+      <v-col cols="4">
+        <v-card class="elevation-16 mx-auto">
+          <v-card-title class="headline" primary-title>文件下载</v-card-title>
+          <v-card-actions class="justify-start">
+            <v-btn color="primary" @click="downloadLearningContent('video')">视频（{{nowLearningContent.size}}）</v-btn>
+            <v-btn color="primary" @click="downloadLearningContent('aid')">资料（{{nowLearningContent.aidSize}}）</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col cols="4">
         <v-card class="elevation-16 mx-auto">
           <v-card-title class="headline" primary-title>作业上传</v-card-title>
           <v-card-text>
@@ -20,7 +29,7 @@
           </v-card-actions>
         </v-card>
       </v-col>
-      <v-col cols="6">
+      <v-col cols="4">
         <v-card class="elevation-16 mx-auto">
           <v-card-title class="headline" primary-title>教师建议</v-card-title>
           <v-card-text>
@@ -56,6 +65,18 @@
         videoSrc: null,
         studentWork: {score: 0, suggest: '教师未给出建议和评分'},
         uploadFile: null
+      }
+    },
+    computed: {
+      nowLearningContent: function () {
+        const learningContent = this.learningContent.data.find(item => item.id === this.learningContent.nowId);
+        if (learningContent) {
+          learningContent.size = formatFileSize(learningContent.size);
+          learningContent.aidSize = formatFileSize(learningContent.aidSize);
+          return learningContent;
+        } else {
+          return {};
+        }
       }
     },
     methods: {
@@ -132,6 +153,10 @@
             }
             this.studentWork = data;
           })
+      },
+      downloadLearningContent(type) {
+        const api = `${API.learningContent.download}${type}/${this.learningContent.nowId}`;
+        Download(api, () => `教师资料.${type === 'video' ? this.nowLearningContent.extensionName : this.nowLearningContent.aidExtensionName}`)
       }
     },
     created() {

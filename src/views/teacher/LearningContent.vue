@@ -7,12 +7,16 @@
                 @save="handleSave" @update="handleUpdate" @delete="handleDelete">
       <template v-slot="{editedItem,isModify}">
         <v-row>
-          <v-col cols="6">
+          <v-col cols="4">
             <v-text-field v-model="editedItem.name" label="名称"></v-text-field>
           </v-col>
-          <v-col cols="6">
+          <v-col cols="4">
             <v-file-input :disabled="isModify" show-size accept="video/*" v-model="editedItem.file"
-                          label="上传文件"></v-file-input>
+                          label="视频文件"></v-file-input>
+          </v-col>
+          <v-col cols="4">
+            <v-file-input :disabled="isModify" show-size v-model="editedItem.aid"
+                          label="资料文件"></v-file-input>
           </v-col>
         </v-row>
       </template>
@@ -59,8 +63,10 @@
       uploadProgress: 0,
       headers: [
         {text: '名称', align: 'start', value: 'name',},
-        {text: '大小', value: 'size',},
-        {text: '扩展名', value: 'extensionName',},
+        {text: '视频大小', value: 'size',},
+        {text: '视频扩展名', value: 'extensionName',},
+        {text: '资料大小', value: 'aidSize',},
+        {text: '资料扩展名', value: 'aidExtensionName',},
         {text: '创建时间', value: 'gmtCreate'},
         {text: '修改时间', value: 'gmtModified'},
         {text: '操作', value: 'actions', sortable: false},
@@ -100,6 +106,7 @@
           .do(response => {
             this.data = formatResponseDateTime(response.data.data).map(item => {
               item.size = formatFileSize(item.size);
+              item.aidSize = formatFileSize(item.aidSize);
               return item;
             });
           })
@@ -108,7 +115,7 @@
           });
       },
       handleSave(data) {
-        if (!data.name || data.name.trim() === '') {
+        if (!data.name || !data.file || !data.aid || data.name.trim() === '') {
           alert("值不能为空");
           return;
         }
