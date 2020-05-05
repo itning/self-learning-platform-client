@@ -122,6 +122,12 @@ const routes = [
         }
       },
       {
+        path: 'myExamScore',
+        components: {
+          subContent: () => import(/* webpackChunkName: "ExamScore" */ '../views/student/ExamScore.vue')
+        }
+      },
+      {
         path: '',
         redirect: 'myStudy'
       }

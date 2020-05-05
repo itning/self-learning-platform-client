@@ -18,6 +18,14 @@
             <v-list-item-title>学习内容管理</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link @click="pushRouter('/student/myExamScore')">
+          <v-list-item-action>
+            <v-icon>mdi-counter</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>我的成绩</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item link @click="pushRouter('/student/myClass')">
           <v-list-item-action>
             <v-icon>mdi-book-variant</v-icon>
