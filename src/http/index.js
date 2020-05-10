@@ -1,6 +1,6 @@
-import HelpConfig from "@itning/axios-helper/dist/HelpConfig";
+import {AxiosHelperConfig} from "@itning/axios-helper";
 
-HelpConfig.errorMsgImpl = {
+AxiosHelperConfig.errorMsgImpl = {
   showErrorToast(title, data) {
     let msg;
     if (typeof data === "string") {
@@ -9,10 +9,10 @@ HelpConfig.errorMsgImpl = {
       msg = data.msg;
     }
     alert(`${title}:${msg}`);
-    HelpConfig.onceMsgFinish();
+    AxiosHelperConfig.onceMsgFinish();
   }
 };
-HelpConfig.axiosInstanceBuilder
+AxiosHelperConfig.axiosInstanceBuilder
   .timeOut(1000 * 12)
   .requestInterceptor({
     onFulfilled: request => {
