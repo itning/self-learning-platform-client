@@ -7576,10 +7576,10 @@ vuetify-loader@^1.4.4:
     file-loader "^4.0.0"
     loader-utils "^1.2.0"
 
-vuetify@^2.2.31:
-  version "2.2.31"
-  resolved "https://registry.npm.taobao.org/vuetify/download/vuetify-2.2.31.tgz#4bfae969738e0a12a1138f014010a97cdbcd7674"
-  integrity sha1-S/rpaXOOChKhE48BQBCpfNvNdnQ=
+vuetify@^2.2.32:
+  version "2.2.32"
+  resolved "https://registry.npm.taobao.org/vuetify/download/vuetify-2.2.32.tgz#53a511916382e4fd6a0f01347233e67f817d95f9"
+  integrity sha1-U6URkWOC5P1qDwE0cjPmf4F9lfk=
 
 vuex@^3.4.0:
   version "3.4.0"
