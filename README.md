@@ -13,7 +13,7 @@
 [![HitCount](http://hits.dwyl.io/itning/self-learning-platform-client.svg)](http://hits.dwyl.io/itning/self-learning-platform-client)
 [![language](https://img.shields.io/badge/language-Vue-green.svg)](https://github.com/itning/self-learning-platform-client)
 
-**前后端分离项目**，前端地址：[https://github.com/itning/self-learning-platform-client](https://github.com/itning/self-learning-platform-client)
+**前后端分离项目**，后端地址：[https://github.com/itning/self-learning-platform-server](https://github.com/itning/self-learning-platform-server)
 
 ## 功能大纲
 
