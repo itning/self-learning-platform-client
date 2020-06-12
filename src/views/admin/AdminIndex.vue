@@ -77,11 +77,11 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container fluid>
         <router-view name="subContent"/>
       </v-container>
-    </v-content>
+    </v-main>
     <v-dialog v-model="isChangePasswordDialogVisible" persistent max-width="600px">
       <v-card>
         <v-card-title>
