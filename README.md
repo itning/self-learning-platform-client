@@ -10,7 +10,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/itning/self-learning-platform-client.svg)](https://github.com/itning/self-learning-platform-client/commits)
 [![GitHub release](https://img.shields.io/github/release/itning/self-learning-platform-client.svg)](https://github.com/itning/self-learning-platform-client/releases)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/itning/self-learning-platform-client.svg)](https://github.com/itning/self-learning-platform-client)
-[![HitCount](http://hits.dwyl.io/itning/self-learning-platform-client.svg)](http://hits.dwyl.io/itning/self-learning-platform-client)
+[![HitCount](http://hits.dwyl.com/itning/self-learning-platform-client.svg)](http://hits.dwyl.com/itning/self-learning-platform-client)
 [![language](https://img.shields.io/badge/language-Vue-green.svg)](https://github.com/itning/self-learning-platform-client)
 
 **前后端分离项目**，后端地址：[https://github.com/itning/self-learning-platform-server](https://github.com/itning/self-learning-platform-server)
